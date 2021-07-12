@@ -5,8 +5,7 @@ pipeline {
         stage ('chekout') {
 
             steps {
-                   sh 'rm -rf * '
-                   sh 'git  https://github.com/BorhenCherif/Test-Vue-PP.git'
+                     git  https://github.com/BorhenCherif/Test-Vue-PP.git'
                 }
             }
          stage ('build') {
