@@ -5,6 +5,7 @@ pipeline {
         stage ('chekout') {
 
             steps {
+                   sh ' cd /root/project/'
                    sh 'rm -rf * '
                     git clone 'https://github.com/BorhenCherif/Test-Vue-PP.git'
                 }
