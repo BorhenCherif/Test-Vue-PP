@@ -5,14 +5,14 @@ pipeline {
 
              stage ('checkout') {
                   steps {
-                     checkapp()
+                      git  "https://github.com/BorhenCherif/Test-Vue-PP.git"
                 }
              }
        
          stage ('build')  {
 
             steps {
-             buildapp()
+              sh " mvn clean install"
                     }
             }
             
@@ -21,14 +21,14 @@ pipeline {
         stage ('test')  {
             steps {
                 
-             testapp()
+          sh " mvn test"
                 }
 
             }
         }
  
  }
- def checkapp(){
+ /*def checkapp(){
          git  "https://github.com/BorhenCherif/Test-Vue-PP.git"
 
  }
@@ -42,6 +42,7 @@ pipeline {
        
        sh " mvn test"
  }
+ */
 
 
 
