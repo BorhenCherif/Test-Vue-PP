@@ -5,7 +5,7 @@ pipeline {
         stage ('chekout') {
 
             steps {
-                     git  https://github.com/BorhenCherif/Test-Vue-PP.git'
+                     git  'https://github.com/BorhenCherif/Test-Vue-PP.git'
                 }
             }
          stage ('build') {
