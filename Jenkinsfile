@@ -7,7 +7,7 @@ pipeline {
             steps {
                    sh ' cd /root/project/'
                    sh 'rm -rf * '
-                   sh 'git clone 'https://github.com/BorhenCherif/Test-Vue-PP.git'
+                   sh 'git clone https://github.com/BorhenCherif/Test-Vue-PP.git'
                 }
             }
          stage ('build') {
