@@ -5,13 +5,14 @@ pipeline {
         stage ('chekout') {
 
             steps {
-                    git 'https://github.com/BorhenCherif/Test-Vue-PP.git'
+                   sh 'rm -rf * '
+                    git clone 'https://github.com/BorhenCherif/Test-Vue-PP.git'
                 }
             }
          stage ('build') {
 
             steps {
-                    sh 'mvn clean install'
+                    sh 'cd /Test-Vue-PP/ && mvn clean install'
                 }
             }
 
@@ -19,7 +20,7 @@ pipeline {
         stage ('test') {
 
             steps {
-                    sh 'mvn test'
+                    sh 'cd /Test-Vue-PP/ && mvn test'
                 }
             }
         }
