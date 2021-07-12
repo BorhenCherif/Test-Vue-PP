@@ -12,7 +12,7 @@ pipeline {
          stage ('build') {
 
             steps {
-                    sh 'cd /Test-Vue-PP/ && mvn clean install'
+                    sh ' mvn clean install'
                 }
             }
 
