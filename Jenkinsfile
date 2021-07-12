@@ -26,6 +26,8 @@ pipeline {
 
             }
         }
+ 
+ }
  def checkapp(){
         dir('/opt/projects') {
         sh "rm -rf *"
@@ -47,7 +49,6 @@ pipeline {
  }
 
 }
- }
 
 
 
