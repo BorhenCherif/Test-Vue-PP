@@ -2,27 +2,38 @@ pipeline {
     agent any
 
     stages {
-        stage ('chekout') {
 
-            steps {
-                     git  'https://github.com/BorhenCherif/Test-Vue-PP.git'
+             stage ('checkout') {
+                  steps {
+                    dir('/opt/projects') {
+                    sh "rm -rf *"
+                    sh  "git clone https://github.com/BorhenCherif/Test-Vue-PP.git"
+
                 }
-            }
-         stage ('build') {
+
+    
+             }
+             }
+       
+         stage ('build')  {
 
             steps {
-                    sh ' mvn clean install'
+                dir('/opt/projects/Test-Vue-PP') {
+                    sh " mvn clean install"
                 }
+                 }
             }
 
-
-        stage ('test') {
+ 
+        stage ('test')  {
 
             steps {
-                    sh ' mvn test'
+                dir('/opt/projects') {
+                    sh " mvn test"
                 }
             }
         }
+}
 }
 
 
