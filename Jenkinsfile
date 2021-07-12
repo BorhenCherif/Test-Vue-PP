@@ -6,7 +6,7 @@ pipeline {
 
             steps {
                    sh 'rm -rf * '
-                   sh 'git clone https://github.com/BorhenCherif/Test-Vue-PP.git'
+                   sh 'git  https://github.com/BorhenCherif/Test-Vue-PP.git'
                 }
             }
          stage ('build') {
@@ -20,7 +20,7 @@ pipeline {
         stage ('test') {
 
             steps {
-                    sh 'cd /Test-Vue-PP/ && mvn test'
+                    sh ' mvn test'
                 }
             }
         }
