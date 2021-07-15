@@ -1,50 +1,29 @@
 pipeline {
-    agent any
+  agent any
+  stages {
+    stage('checkout') {
+      steps {
+        git 'https://github.com/BorhenCherif/Test-Vue-PP.git'
+      }
+    }
 
-    stages {
+    stage('build') {
+      steps {
+        sh ' mvn clean install'
+      }
+    }
 
-             stage ('checkout') {
-                  steps {
-                      git  "https://github.com/BorhenCherif/Test-Vue-PP.git"
-                }
-             }
-       
-         stage ('build')  {
+    stage('test') {
+      steps {
+        sh ' mvn test'
+      }
+    }
 
-            steps {
-              sh " mvn clean install"
-                    }
-            }
-            
+    stage('deploy') {
+      steps {
+        echo 'deploy'
+      }
+    }
 
- 
-        stage ('test')  {
-            steps {
-                
-          sh " mvn test"
-                }
-
-            }
-        }
- 
- }
- /*def checkapp(){
-         git  "https://github.com/BorhenCherif/Test-Vue-PP.git"
-
- }
- 
-
- def builapp(){
-        sh " mvn clean install"
-
- }
- def testapp(){
-       
-       sh " mvn test"
- }
- */
-
-
-
-
-
+  }
+}
