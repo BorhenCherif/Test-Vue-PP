@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+                registry = "borhencherif/TEST-VUE-PP"
+                registryCredential = "dockerhub"
+
+    }
+
     stages {
 
              stage ('checkout') {
@@ -25,24 +31,44 @@ pipeline {
                 }
 
             }
+
+        stage('build image'){
+         steps{
+         script{
+
+              dockerImage = docker.build registry + ":V$BUILD_NUMBER"
+
+
+         }
+
+         }
+        }
+          stage ('upload image'){
+          steps{
+              script{
+             
+                 docker.withRegistry('',registryCredential) {
+
+                     dockerImage.push("V$BUILD_NUMBER")
+                     dockerImage.push('latest')
+                 } 
+
+              }
+          }
+
+
+          }
+
+
+          stage ('remove unused docker image'){
+              steps{
+                  sh "docker rmi $registry:V$BUILD_NUMBER"
+              }
+          }
         }
  
  }
- /*def checkapp(){
-         git  "https://github.com/BorhenCherif/Test-Vue-PP.git"
 
- }
- 
-
- def builapp(){
-        sh " mvn clean install"
-
- }
- def testapp(){
-       
-       sh " mvn test"
- }
- */
 
 
 
